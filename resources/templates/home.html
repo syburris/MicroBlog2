@@ -6,7 +6,13 @@
 </head>
 <body>
     {{#name}}
-    Hello, {{name}}!<br>
+    Hello, {{name}}!<br><br><br>
+
+    <form action="/edit-message" method="post">
+        <input type="number" placeholder="Message #" name="message#"/>
+        <input type="text" placeholder="Edit Message" name="editMessage"/>
+        <button type="submit">Edit</button>
+    </form>
 
     <form action="/create-message" method="post">
         <input type="text" placeholder="Write a message" name="newMessage"/>
