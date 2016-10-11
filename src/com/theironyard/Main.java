@@ -35,10 +35,15 @@ public class Main {
                 "/login",
                 (request, response) -> {
                     String name = request.queryParams("userName");
+                    String password = request.queryParams("password");
                     User user = users.get(name);
                     if (user == null){
-                        user = new User(name);
+                        user = new User(name,password);
                         users.put(name,user);
+                    }
+                    else if (!password.equals(user.password)) {
+                        response.redirect("/");
+                        return null;
                     }
                     Session session = request.session();
                     session.attribute("userName", name);
