@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Micro Blog Home</title>
+</head>
+<body>
+    {{#name}}
+    Hello, {{name}}!<br>
+
+    <form action="/create-message" method="post">
+        <input type="text" placeholder="Write a message" name="newMessage"/>
+        <button type="submit">Submit</button>
+    </form><br>
+
+    Messages by {{name}}:<br>
+    <ol>
+        {{#userMessages}}
+        <li>{{text}}</li>
+        {{/userMessages}}
+    </ol>
+
+    <form action="/logout" method="post">
+        <button type="submit">Log Out</button>
+    </form>
+    {{/name}}
+
+    {{^name}}
+    <form action="/login" method="post">
+        <input type="text" placeholder="Enter Your Name" name="userName"/><br>
+        <input type="password" placeholder="Enter Your Password" name="password"/>
+        <button type="submit">Login</button>
+    </form>
+    {{/name}}
+</body>
+</html>
