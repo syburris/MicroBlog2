@@ -68,6 +68,18 @@ public class Main {
                 }
         );
         Spark.post(
+                "/edit-message",
+                (request, response) -> {
+                    Session session = request.session();
+                    String name = session.attribute("userName");
+                    User user = users.get(name);
+                    String number = request.queryParams("message#");
+
+
+                    return null;
+                }
+        );
+        Spark.post(
                 "/logout",
                 (request, response) -> {
                     Session session = request.session();
