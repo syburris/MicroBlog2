@@ -74,10 +74,7 @@ public class Main {
                     String name = session.attribute("userName");
                     User user = users.get(name);
                     String number = request.queryParams("deleteMessage#");
-                    if (number < )
-                    int messageNumber = Integer.parseInt(number) - 1;
-                    int message = user.messages.indexOf(messageNumber);
-                    user.messages.remove(message);
+                    user.messages.remove(Integer.parseInt(number)-1);
                     session.attribute("userName", name);
                     response.redirect("/");
                     return null;

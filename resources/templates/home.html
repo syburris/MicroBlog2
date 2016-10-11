@@ -8,15 +8,17 @@
     {{#name}}
     Hello, {{name}}!<br><br><br>
 
-    <form action="/delete-message" method="post">
-        <input type="text" placeholder="Delete Message #" name="deleteMessage#"/>
-        <button type="submit">Delete</button>
-    </form>
 
     <form action="/create-message" method="post">
         <input type="text" placeholder="Write a message" name="newMessage"/>
         <button type="submit">Submit</button>
-    </form><br>
+    </form><br><br>
+
+    <form action="/delete-message" method="post">
+        <input type="text" placeholder="Delete Message #" name="deleteMessage#"/>
+        <button type="submit">Delete</button>
+    </form><br><br>
+
 
     Messages by {{name}}:<br>
     <ol>
