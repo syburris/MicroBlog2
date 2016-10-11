@@ -8,10 +8,9 @@
     {{#name}}
     Hello, {{name}}!<br><br><br>
 
-    <form action="/edit-message" method="post">
-        <input type="number" placeholder="Message #" name="message#"/>
-        <input type="text" placeholder="Edit Message" name="editMessage"/>
-        <button type="submit">Edit</button>
+    <form action="/delete-message" method="post">
+        <input type="text" placeholder="Delete Message #" name="deleteMessage#"/>
+        <button type="submit">Delete</button>
     </form>
 
     <form action="/create-message" method="post">

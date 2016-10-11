@@ -68,14 +68,18 @@ public class Main {
                 }
         );
         Spark.post(
-                "/edit-message",
+                "/delete-message",
                 (request, response) -> {
                     Session session = request.session();
                     String name = session.attribute("userName");
                     User user = users.get(name);
-                    String number = request.queryParams("message#");
-
-
+                    String number = request.queryParams("deleteMessage#");
+                    if (number < )
+                    int messageNumber = Integer.parseInt(number) - 1;
+                    int message = user.messages.indexOf(messageNumber);
+                    user.messages.remove(message);
+                    session.attribute("userName", name);
+                    response.redirect("/");
                     return null;
                 }
         );
