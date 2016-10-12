@@ -38,6 +38,10 @@ public class Main {
                     String password = request.queryParams("password");
                     User user = users.get(name);
                     if (user == null){
+                        if (password.isEmpty()) {
+                            response.redirect("/");
+                            return null;
+                        }
                         user = new User(name,password);
                         users.put(name,user);
                     }
@@ -62,6 +66,21 @@ public class Main {
                     messages1.add(message);
                     ArrayList<Message> userMessages = user.messages;
                     userMessages.add(message);
+                    session.attribute("userName", name);
+                    response.redirect("/");
+                    return null;
+                }
+        );
+        Spark.post(
+                "/edit-message",
+                (request, response) -> {
+                    Session session = request.session();
+                    String name = session.attribute("userName");
+                    User user = users.get(name);
+                    Message messageEdit = new Message(request.queryParams("editMessage"));
+                    String number = request.queryParams("editMessage#");
+                    user.messages.remove(Integer.parseInt(number)-1);
+                    user.messages.add(Integer.valueOf(number)-1,messageEdit);
                     session.attribute("userName", name);
                     response.redirect("/");
                     return null;
